@@ -1,9 +1,19 @@
 on src folder
 
+https://github.com/forye/ML_ex1_knn
 https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+
 first time:
 >
 git init
+>
+git add .
+>
+git commit -m "First commit"
+>
+git remote add origin https://github.com/forye/ML_ex1_knn.git
+>
+git push -u origin master
 
 
 (
