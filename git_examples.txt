@@ -18,7 +18,7 @@ first time:
 	git remote add origin https://github.com/forye/ML_ex1_knn.git
 >
 	git push -u origin master
-
+[-u | --set-upstream]
 
 update local repo
 >
@@ -67,6 +67,7 @@ revert to last history from server
 rebase (another way to integrate changes)
 https://git-scm.com/book/en/v2/Git-Branching-Rebasing
 	git rebase
+
 
 
 built-in git GUI
