@@ -2,18 +2,90 @@ on src folder
 
 https://github.com/forye/ML_ex1_knn
 https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+http://rogerdudler.github.io/git-guide/
+
+<server> = https://github.com/forye/ML_ex1_knn.git
+<branch> = master
 
 first time:
 >
-git init
+	git init
 >
-git add .
+	git add .
 >
-git commit -m "First commit"
+	git commit -m "First commit"
 >
-git remote add origin https://github.com/forye/ML_ex1_knn.git
+	git remote add origin https://github.com/forye/ML_ex1_knn.git
 >
-git push -u origin master
+	git push -u origin master
+
+
+update local repo
+>
+	git add <filename>
+.or.
+	git add *
+
+commit
+>
+	git commit -m "Commit message"
+
+push to server
+	>
+	git push origin master
+
+
+clone a remote repo
+	git remote add origin <server>
+
+
+update repo
+	>
+	git pull
+
+
+merge:
+	before merging changes, you can also preview them by using
+	git diff <source_branch> <target_branch>
+	
+	to merge another branch into your active branch (e.g. master), use
+	git merge <branch>
+
+	mark them as merged 
+	git add <filename>
+	
+
+replace local changes
+	git checkout -- <filename>
+
+revert to last history from server
+	git fetch origin
+	git reset --hard origin/master
+
+
+
+rebase (another way to integrate changes)
+https://git-scm.com/book/en/v2/Git-Branching-Rebasing
+	git rebase
+
+
+built-in git GUI
+gitk
+
+use colorful git output
+git config color.ui true
+
+show log on just one line per commit
+git config format.pretty oneline
+
+use interactive adding
+git add -i
+
+
+http://rogerdudler.github.io/git-guide/
+http://marklodato.github.io/visual-git-guide/index-en.html
+
+
 
 
 (
