@@ -26,28 +26,42 @@ for k = 1 : K
 %     clusters= kmeans(samples , k)    ;
 % std_clusters = kmeans(standardSamples , k)    ;
 % without_stand_std(k) =  sum(clusters(3)) / k;
-    [idxs1, centroids, sum_cent_diviation1 ,distance_point_2cent ] = kmeans(samples , k);    
-    [idxs2, centroids, sum_cent_diviation2 ,distance_point_2cent ] = kmeans(standardSamples , k);    
+    [idxs1, centroids, sum_cent_diviation1  ] = kmeans(samples , k);    
+    [idxs2, centroids, sum_cent_diviation2  ] = kmeans(standardSamples , k);    
     for j = 1:k
 %         distance_point_2cent(idxs == j)
 %         sum_cent_diviation(j)
-        without_stand_std(k) = without_stand_std(k) +  sum(sum_cent_diviation1(j) * sum(idxs1 == j)  ) / k;
-        stand_std(k)= stand_std(k) + sum(sum_cent_diviation2(j) * sum(idxs2 == j)  ) / k;
+        without_stand_std(k) = without_stand_std(k) +  sum(sum_cent_diviation1(j) * sum(idxs1 == j)); % weighted avrage ( by elements in cluster)
+        stand_std(k)= stand_std(k) + sum(sum_cent_diviation2(j) * sum(idxs2 == j)); % sum(idx2 ~- 'c') = 214
     end
-%     without_stand_std(k) =  sum(sum_cent_diviation .* idxs  ) / k;
+    without_stand_std(k) = without_stand_std(k) / k;
+    stand_std(k)= stand_std(k) / k;
     
+%     without_stand_std(k) =  sum(sum_cent_diviation .* idxs  ) / k;    
 %     stand_std(k)=  sum(sum_cent_diviation) / k;
 end
 
 
+
+% %% Plots
+% figure(1)
+% hold on
+% plot(stand_std , 'r')
+% plot(without_stand_std )
+% legend('standardizied error loss','not standardizied error loss')
+% % title('Glass nearest neighburs 10-fold cross-validation accuracy(regular vs standardisized)')
+% ylabel('avg distance from centroid')
+% xlabel('k amount of clusters')
+% hold off
+
 %% Plots
 figure(1)
 hold on
-plot(stand_std , 'r')
-plot(without_stand_std )
-legend('standardizied error loss','not standardizied error loss')
-% title('Glass nearest neighburs 10-fold cross-validation accuracy(regular vs standardisized)')
-ylabel('avg distance from centroid')
+plot(log ( stand_std ) , 'r')
+plot(log ( without_stand_std) )
+legend('standardizied clustering','not standardizied clustering')
+title('avrage moise (sqrt) on the centroids of k-mean algorithm(regular vs standardisized)')
+ylabel('log avg distance from centroid')
 xlabel('k amount of clusters')
 hold off
 
