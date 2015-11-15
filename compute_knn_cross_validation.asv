@@ -48,7 +48,17 @@ ylabel('% Accuracy')
 xlabel('k (amount of nearest neighbors voting)')
 hold off
 
-    
+
+colors = ['r','b','y','m','c','g','k']
+u_labls = unique(lables)
+for n = 2: size(samples,2)    
+    figure(n)
+    hold on
+    for c = 1:size(u_labls,1)        
+        scatter(samples(lables==u_labls(c),1),samples(lables==u_labls(c),n),colors(c), 'filled') %,colors(n-1)
+    end
+    hold off
+end
 % 
 % figure(2)
 % hold on

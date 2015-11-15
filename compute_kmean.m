@@ -31,8 +31,8 @@ for k = 1 : K
     for j = 1:k
 %         distance_point_2cent(idxs == j)
 %         sum_cent_diviation(j)
-        without_stand_std(k) = without_stand_std(k) +  sum(sum_cent_diviation1(j) * sum(idxs1 == j)); % weighted avrage ( by elements in cluster)
-        stand_std(k)= stand_std(k) + sum(sum_cent_diviation2(j) * sum(idxs2 == j)); % sum(idx2 ~- 'c') = 214
+        without_stand_std(k) = without_stand_std(k) +  sum_cent_diviation1(j) * sum(idxs1 == j); % weighted avrage ( by elements in cluster)
+        stand_std(k)= stand_std(k) + sum_cent_diviation2(j) * sum(idxs2 == j); % sum(idx2 ~- 'c') = 214
     end
     without_stand_std(k) = without_stand_std(k) / k;
     stand_std(k)= stand_std(k) / k;
